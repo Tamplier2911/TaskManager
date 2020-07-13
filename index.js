@@ -11,6 +11,7 @@ dotenv.config({ path: "./.env" });
 const app = require("./app");
 
 // DB CONNECTION
+// const dbLocal = "mongodb://127.0.0.1:27017/dbName";
 const db = process.env.DB.replace("*PASSWORD*", process.env.DB_PASSWORD);
 
 mongoose
@@ -22,7 +23,8 @@ mongoose
   })
   .then(() => {
     console.log("Successfuly connected to DB!");
-  });
+  })
+  .catch((err) => console.log(err.message));
 
 // SERVER
 const PORT = process.env.PORT || 5000;

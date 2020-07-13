@@ -1,5 +1,8 @@
+/*  
+
+// REFERENCE TO DB MANIPULATION USING DRIVER
+
 const mongodb = require("mongodb");
-// const test = require("assert");
 const dotenv = require("dotenv");
 
 // access to envirnoment variables
@@ -8,7 +11,7 @@ dotenv.config({ path: "./.env" });
 // initialize mongodb
 const MongoClient = mongodb.MongoClient;
 
-// const url = "mongodb://127.0.0.1:27017";
+// const connectionURL = "mongodb://127.0.0.1:27017";
 const connectionURL = process.env.DB.replace(
   "*PASSWORD*",
   process.env.DB_PASSWORD
@@ -22,9 +25,7 @@ const dbName = "TaskManager";
 // api docks
 // http://mongodb.github.io/node-mongodb-native/3.5/api/
 
-/*
-
-// objectid 12 bytes 4 timestamp 5 random 3 increment
+// objectid 12 bytes -  4 bytes timestamp, 5 bytes random, 3 bytes increment
 console.log(new mongodb.ObjectID());
 // raw binary .id.length === 12
 console.log(new mongodb.ObjectID().id.length);
@@ -32,8 +33,6 @@ console.log(new mongodb.ObjectID().id.length);
 console.log(new mongodb.ObjectID().toHexString());
 // first 4 bytes timestamp
 console.log(new mongodb.ObjectID().getTimestamp());
-
-*/
 
 // connect using MongoClient
 MongoClient.connect(
@@ -51,14 +50,10 @@ MongoClient.connect(
     const db = client.db(dbName);
 
     // close session
-    client.close(() => console.log("Session closed gracefully!"));
-
-    /** INSERT ONE AND INSERT MANY REFERENCE */
-
-    /*
+    // client.close(() => console.log("Session closed gracefully!"));
 
     // INSERT ONE OBJECT to the collection
-    
+
     db.collection("users").insertOne(
       {
         name: "Thomas White",
@@ -70,13 +65,12 @@ MongoClient.connect(
         console.log(
           `Document was successfuly inserted, objectId - ${res.ops[0]._id}!`
         );
-        client.close();
+        // client.close();
       }
     );
-    
 
     // INSERT MULTIPLE OBJECTS to the collection
-    
+
     db.collection("users").insertMany(
       [
         {
@@ -104,15 +98,9 @@ MongoClient.connect(
         if (err) return console.log(err.message);
         console.log("All documents was successfuly inserte, objectId's are - ");
         res.ops.forEach((obj) => console.log(obj._id));
-        client.close();
+        // client.close();
       }
     );
-
-    */
-
-    /** FIND ONE & FIND REFERENCE */
-
-    /*
 
     // FIND ONE OBJECTS to the collection
 
@@ -122,15 +110,15 @@ MongoClient.connect(
         if (err) return console.log(err.message);
         // res - stores data of single object (first found object that matched cretiea)
         console.log(res);
-        client.close();
+        // client.close();
       }
     );
-    
+
     // FIND MULTIPLE OBJECTS to the collection
 
     // returns a cursor (db reference) - which then can be used to travers over data
     const cursor = db.collection("users").find({ age: 22 });
-    
+
     // we then can use cursor to perform certain methods on reference
     cursor.toArray((err, users) => {
       if (err) return console.log(err.message);
@@ -138,20 +126,14 @@ MongoClient.connect(
       console.log(users);
       // client.close();
     });
-    
+
     // we then can use cursor to perform certain methods on reference
     cursor.count((err, amount) => {
       if (err) return console.log(err.message);
       // count method amount of object that matched criteria we set
       console.log(amount);
-      client.close();
+      // client.close();
     });
-    
-    */
-
-    /** UPDATE ONE & UPDATE MANY REFERENCE */
-
-    /*
 
     // UPDATE ONE OBJECT IN COLLECTION
 
@@ -172,7 +154,7 @@ MongoClient.connect(
         console.log(
           `Matched ${res.matchedCount} documets, modified ${res.modifiedCount}.`
         );
-        client.close();
+        // client.close();
       }
     );
 
@@ -209,7 +191,7 @@ MongoClient.connect(
         console.log(
           `Matched ${res.matchedCount} documets, modified ${res.modifiedCount}.`
         );
-        client.close();
+        // client.close();
       }
     );
 
@@ -229,12 +211,6 @@ MongoClient.connect(
       )
       .catch((err) => console.log(err.message));
 
-    */
-
-    /** DELETE ONE & DELETE MANY REFERENCE */
-
-    /*
-
     // DELETE ONE DOCUMENT FROM COLLECTION
 
     // returns a promise if no callback passed
@@ -242,7 +218,7 @@ MongoClient.connect(
     db.collection("users").deleteOne({ name: "Rob" }, (err, res) => {
       if (err) return console.log(err.message);
       console.log(res.deletedCount);
-      client.close();
+      // client.close();
     });
 
     // using promises
@@ -258,7 +234,7 @@ MongoClient.connect(
     db.collection("users").deleteMany({ name: "Rob" }, (err, res) => {
       if (err) return console.log(err.message);
       console.log(res.deletedCount);
-      client.close();
+      // client.close();
     });
 
     // using promises
@@ -266,7 +242,7 @@ MongoClient.connect(
       .deleteMany({ name: "Rob" })
       .then((data) => console.log(data.deletedCount))
       .catch((err) => console.log(err.message));
-  
-    */
   }
 );
+
+*/
