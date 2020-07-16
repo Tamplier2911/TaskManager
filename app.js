@@ -23,7 +23,8 @@ const enforce = require("express-sslify");
 // const globalErrorHandler = require('./controllers')
 
 // routers
-// const someRouter = require('./routes/someRouter.js');
+const userRouter = require("./routes/userRoutes");
+const taskRouter = require("./routes/taskRoutes");
 
 // html engine
 
@@ -75,7 +76,8 @@ app.use("/static", express.static(path.join(__dirname, "static")));
 // app.set("views", path.join(__dirname, "views"));
 
 // routes
-// app.use("/api/v1/someRoute", someRoute);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/tasks", taskRouter);
 
 if (process.env.NODE_ENV === "production") {
   // compress all response bodies
