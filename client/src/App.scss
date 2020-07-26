@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 117rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 1rem 0 1rem;
+}
+
+.holder {
+  display: flex;
+}
+
+.circle {
+  width: 20rem;
+  height: 20rem;
+  background-color: transparent;
+  border-radius: 50%;
+  border-right-style: solid;
+  border-right-color: palevioletred;
+}

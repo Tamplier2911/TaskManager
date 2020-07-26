@@ -1,0 +1,33 @@
+:root {
+  --cl-font: #333;
+  --cl-blue: skyblue;
+  --font-text: sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @media only screen and (max-width: 48em) {
+    font-size: 56.25%;
+  }
+
+  @media only screen and (max-width: 26.563em) {
+    font-size: 50%;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--cl-font);
+}

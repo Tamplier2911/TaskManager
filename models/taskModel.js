@@ -22,15 +22,15 @@ const taskSchema = new Schema(
       ],
       minlength: [1, "Task description must consist of 1 character or more."],
     },
-    isComplited: {
+    isCompleted: {
       type: Boolean,
       default: false,
     },
-    //   author: {
-    //     type: Schema.ObjectId,
-    //     ref: "User",
-    //     required: [true, "Task must have an author."],
-    //   },
+    author: {
+      type: Schema.ObjectId,
+      ref: "User",
+      required: [true, "Task must have an author."],
+    },
     createdAt: {
       type: Date,
       default: Date.now(),
@@ -38,6 +38,8 @@ const taskSchema = new Schema(
   },
   {
     versionKey: false,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
 

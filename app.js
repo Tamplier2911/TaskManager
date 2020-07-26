@@ -20,7 +20,7 @@ const enforce = require("express-sslify");
 
 // error handling
 // const AppError = require('./utils');
-// const globalErrorHandler = require('./controllers')
+const globalErrorHandler = require("./controllers/errorController");
 
 // routers
 const userRouter = require("./routes/userRoutes");
@@ -62,7 +62,7 @@ app.use((req, res, next) => {
   // CONSOLE LOG COOKIES ON EACH REQUEST
   if (process.env.NODE_ENV === "development") {
     // if (req.body) console.log(req.body);
-    // if (req.cookies) console.log(req.cookies);
+    if (req.cookies) console.log(req.cookies);
     console.log(req.requestTime);
   }
   next();
@@ -119,6 +119,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // GLOBAL ERROR HANDLING MIDDLEWARE
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 module.exports = app;

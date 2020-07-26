@@ -59,11 +59,41 @@ const userSchema = new Schema(
       default: true,
       select: false,
     },
+    /*
+    // saving
+    // user.tokens = user.tokens.concat({ token });
+    // await user.save();
+    // searching
+    // await User.findOne({ "tokens.token": token })
+    tokens: [
+      {
+        token: {
+          type: String,
+          require: true,
+        },
+      },
+    ],
+    */
   },
   {
     versionKey: false,
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true },
   }
 );
+
+// userSchema.set("toObject", { virtuals: true });
+// userSchema.set("toJSON", { virtuals: true });
+
+// arguments - virtual field name, configuration obj
+// ref - which model we reference
+// localField - which field of local model we use
+// foreignField - which field of referenced model we use
+userSchema.virtual("tasks", {
+  ref: "Task",
+  foreignField: "author",
+  localField: "_id",
+});
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -79,13 +109,51 @@ userSchema.pre("save", function (next) {
 });
 
 userSchema.pre("save", function (next) {
-  if (this.isModified("email") || this.isNew) {
-    const md5hash = crypto.createHash("md5").update(this.email).digest("hex");
-    this.photo = `https://gravatar.com/avatar/${md5hash}?d=identicon`;
-    return next();
-  }
+  if (!this.isNew) return next();
+  const md5hash = crypto.createHash("md5").update(this.email).digest("hex");
+  this.photo = `https://gravatar.com/avatar/${md5hash}?d=identicon`;
   next();
 });
+
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.changedPasswordAfter = function (JWTTimeStamp) {
+  if (this.passwordChangedAt) {
+    const changedTimeStamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    // if JWT less than changed - return true password was changed
+    // if JWT greater than changed - return false password wasn't changed
+    return JWTTimeStamp < changedTimeStamp;
+  }
+
+  // false means password not been changed - so we good to continue
+  return false;
+};
+
+userSchema.methods.createPasswordResetToken = function () {
+  // create reset token
+  const resetToken = crypto.randomBytes(32).toString("hex");
+
+  // reset token hashing and storing in DB
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+
+  // token expires in 10 minutes after since it was issued
+  this.passwordResetExpired = Date.now() + 10 * 60 * 1000;
+
+  // returning plain (non hashed) token
+  return resetToken;
+};
 
 const User = model("User", userSchema);
 module.exports = User;
