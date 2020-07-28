@@ -14,10 +14,44 @@
 }
 
 .circle {
+  position: relative;
   width: 20rem;
   height: 20rem;
   background-color: transparent;
   border-radius: 50%;
   border-right-style: solid;
   border-right-color: palevioletred;
+
+  animation: roll 2s infinite;
+}
+
+.eye {
+  position: absolute;
+  background-color: palevioletred;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+
+  &:nth-child(1) {
+    left: 20%;
+    top: 70%;
+    transform: translate(0%, -50%);
+  }
+
+  &:nth-child(2) {
+    left: 20%;
+    top: 30%;
+    transform: translate(0%, -50%);
+  }
+}
+
+@keyframes roll {
+  0%,
+  10% {
+    transform: rotate(0deg);
+  }
+  90%,
+  100% {
+    transform: rotate(360deg);
+  }
 }
