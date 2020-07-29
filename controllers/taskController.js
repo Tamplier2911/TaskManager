@@ -2,16 +2,9 @@ const catchAsync = require("../utils/catchAsync");
 const sanitizeFields = require("../utils/sanitizeFields");
 const Task = require("../models/taskModel");
 const AppError = require("../utils/appError");
-const User = require("../models/userModel");
+const { getAll } = require("./handlesFactory");
 
-exports.getAllTasks = catchAsync(async (req, res, next) => {
-  const tasks = await Task.find();
-
-  res.status(200).json({
-    status: "success",
-    data: tasks,
-  });
-});
+exports.getAllTasks = getAll(Task);
 
 exports.createOneTask = catchAsync(async (req, res, next) => {
   const sanitizedBody = sanitizeFields(req.body, ["title", "description"]);
@@ -66,13 +59,17 @@ exports.deleteOneTask = catchAsync(async (req, res, next) => {
   });
 });
 
+// SAVING THIS CASE FOR VIRTUAL POPULATE REFERENCE //
+
+/*
+
 exports.getUserTasks = catchAsync(async (req, res, next) => {
   // case 1
   // or looking for tasks with currently logged user authority
-  /* const tasks = await Task.find({ author: req.user._id }).populate({
+  const tasks = await Task.find({ author: req.user._id }).populate({
     path: "author",
     select: "name email photo",
-  }); */
+  });
 
   // case 2
   // or creating virtually populated field - tasks
@@ -93,6 +90,13 @@ exports.getUserTasks = catchAsync(async (req, res, next) => {
     // data: tasks, // case 1
     data: user.tasks, // case 2
   });
+});
+
+*/
+
+exports.getUserTasks = getAll(Task, ["author"], {
+  path: "author",
+  select: "name email photo",
 });
 
 exports.addUserTask = catchAsync(async (req, res, next) => {
