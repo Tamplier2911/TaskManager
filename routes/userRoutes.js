@@ -2,13 +2,15 @@ const { Router } = require("express");
 
 // user controller
 const {
+  uploadUserPhoto,
+  resizeUserPhoto,
+  updateMe,
+  deleteMe,
   getAllUsers,
   createOneUser,
   getOneUser,
   updateOneUser,
   deleteOneUser,
-  updateMe,
-  deleteMe,
 } = require("../controllers/userController");
 
 // auth controller
@@ -49,7 +51,7 @@ router.route("/getMe").get(isLoggedIn, getUserObject);
 router.use(protect);
 
 // update user data
-router.route("/updateMe").patch(updateMe);
+router.route("/updateMe").patch(uploadUserPhoto, resizeUserPhoto, updateMe);
 
 // update user password
 router.route("/updateMyPassword").patch(updatePassword);

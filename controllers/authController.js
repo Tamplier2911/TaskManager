@@ -77,11 +77,15 @@ exports.logIn = catchAsync(async (req, res, next) => {
     return next(new AppError("Please provide email and password.", 400));
 
   // check if user with this email is exists
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email }).select("+password +active");
 
   // if no user with this email or password is not correct return error
   if (!user || !(await user.correctPassword(password, user.password)))
     return next(new AppError("Incorrect email or password.", 401));
+
+  // if user is currently inactive return an error
+  if (!user.active)
+    return next(new AppError("This account is no longer active.", 404));
 
   // create and sign jwt and send it to user
   createSendToken(user, 200, req, res);
