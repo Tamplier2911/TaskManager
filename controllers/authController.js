@@ -8,7 +8,7 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
-// email class
+const Email = require("../utils/email");
 
 const signToken = (id) => {
   return jwt.sign({ id: id.toString() }, process.env.JWT_SECRET, {
@@ -51,19 +51,17 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
   const user = await User.create(sanitizedFields);
 
-  /*
   // send email logic
   const url =
     process.env.NODE_ENV === "production"
       ? `https://www.task-manager-s/profile`
       : `http://localhost:3000/profile`;
 
-    // create instance of Email with user, url and data objects
-    const sendEmail = new Email(user, url, {});
+  // create instance of Email with user, url and data objects
+  const sendEmail = new Email(user, url, {});
 
-    // send email
-    await sendEmail.sendWelcome();
-  */
+  // send email
+  await sendEmail.sendWelcome();
 
   // create and send jwt
   createSendToken(user, 201, req, res);
@@ -239,16 +237,16 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // defining urls for email
-  // const url =
-  //   process.env.NODE_ENV === "production"
-  //     ? `https://www.task-manager-s/restore/${resetToken}`
-  //     : `http://localhost:3000/restore/${resetToken}`;
+  const url =
+    process.env.NODE_ENV === "production"
+      ? `https://www.task-manager-s/restore/${resetToken}`
+      : `http://localhost:3000/restore/${resetToken}`;
 
   // create instance of email with current user and rest url
-  // const sendEmail = new Email(user, url, { resetToken, resetToken });
+  const sendEmail = new Email(user, url, { resetToken, resetToken });
 
   // perform password reset method on email instance
-  // await sendEmail.sendPasswordReset();
+  await sendEmail.sendPasswordReset();
 
   res.status(200).json({
     status: "success",
