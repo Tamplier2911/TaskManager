@@ -54,7 +54,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   // send email logic
   const url =
     process.env.NODE_ENV === "production"
-      ? `https://www.task-manager-s/profile`
+      ? `https://tasks-manager-s.herokuapp.com/profile`
       : `http://localhost:3000/profile`;
 
   // create instance of Email with user, url and data objects
@@ -239,7 +239,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   // defining urls for email
   const url =
     process.env.NODE_ENV === "production"
-      ? `https://www.task-manager-s/restore/${resetToken}`
+      ? `https://tasks-manager-s.herokuapp.com/restore/${resetToken}`
       : `http://localhost:3000/restore/${resetToken}`;
 
   // create instance of email with current user and rest url

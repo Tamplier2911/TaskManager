@@ -453,7 +453,7 @@ module.exports = (user, url, data) => {
                     <tr>
                       <td class="email-masthead">
                         <a
-                          href="https://herokuapps.task-manager-s.com"
+                          href="https://tasks-manager-s.herokuapp.com/"
                           class="f-fallback email-masthead_name"
                         >
                           Task Manager
