@@ -1,0 +1,14 @@
+.footer {
+  display: grid;
+  height: 6rem;
+
+  &__content {
+    color: var(--cl-white);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    max-width: 117rem;
+    padding: 0 2rem;
+  }
+}

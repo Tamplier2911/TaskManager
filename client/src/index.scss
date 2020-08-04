@@ -1,7 +1,12 @@
 :root {
+  --cl-main: rgb(243, 51, 147);
   --cl-font: #333;
+  --cl-white: #fff;
   --cl-blue: skyblue;
-  --font-text: sans-serif;
+  --font-text: "Shojumaru";
+  --cl-grad1: rgba(83, 53, 255, 0.377);
+  --cl-grad2: rgba(11, 6, 44, 0.377);
+  --cl-formbg: rgba(23, 17, 66, 0.466);
 }
 
 html {
@@ -27,7 +32,27 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: var(--font-text), sans-serif;
   font-weight: 400;
   line-height: 1.2;
   color: var(--cl-font);
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  font-size: 16px !important;
 }

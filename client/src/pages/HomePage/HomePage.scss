@@ -1,0 +1,34 @@
+.homepage {
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  grid-row-gap: 2rem;
+
+  max-width: 117rem;
+
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &__header {
+    display: grid;
+    color: var(--cl-white);
+    // background-image: linear-gradient(
+    //   to bottom,
+    //   var(--cl-white),
+    //   var(--cl-main)
+    // );
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__formholder {
+    display: grid;
+    // align-items: center;
+    // justify-content: center;
+  }
+}

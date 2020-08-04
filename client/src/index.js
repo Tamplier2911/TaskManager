@@ -10,6 +10,10 @@ import { BrowserRouter } from "react-router-dom";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+// redux
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
 // in cases where the eventual publicPath of output files isn't known at compile time,
 // it can be left blank and set dynamically at runtime via the __webpack_public_path__
 // variable in the entry point file:
@@ -17,8 +21,12 @@ import "regenerator-runtime/runtime";
 // __webpack_public_path__ = myRuntimePublicPath;
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );

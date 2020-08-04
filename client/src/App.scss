@@ -1,57 +1,16 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  max-width: 117rem;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 0 1rem 0 1rem;
+  background-image: linear-gradient(
+      to bottom right,
+      var(--cl-grad1),
+      var(--cl-grad2)
+    ),
+    url("./assets/jpg/paint-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.holder {
-  display: flex;
-}
-
-.circle {
-  position: relative;
-  width: 20rem;
-  height: 20rem;
-  background-color: transparent;
-  border-radius: 50%;
-  border-right-style: solid;
-  border-right-color: palevioletred;
-
-  animation: roll 2s infinite;
-}
-
-.eye {
-  position: absolute;
-  background-color: palevioletred;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-
-  &:nth-child(1) {
-    left: 20%;
-    top: 70%;
-    transform: translate(0%, -50%);
-  }
-
-  &:nth-child(2) {
-    left: 20%;
-    top: 30%;
-    transform: translate(0%, -50%);
-  }
-}
-
-@keyframes roll {
-  0%,
-  10% {
-    transform: rotate(0deg);
-  }
-  90%,
-  100% {
-    transform: rotate(360deg);
-  }
+.main {
+  display: grid;
+  height: calc(100vh - 12rem);
 }
