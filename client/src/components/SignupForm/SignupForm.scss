@@ -1,0 +1,7 @@
+.signupform {
+  display: grid;
+  &__element {
+    display: grid;
+    grid-row-gap: 1rem;
+  }
+}

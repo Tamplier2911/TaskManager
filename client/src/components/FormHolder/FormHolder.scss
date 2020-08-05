@@ -1,0 +1,53 @@
+.formholder {
+  display: grid;
+  grid-auto-rows: min-content 1fr;
+  grid-row-gap: 2rem;
+  background-color: var(--cl-formbg);
+  //   width: 45rem;
+  //   height: 50rem;
+
+  border-radius: 30px;
+  border-bottom: 8px solid var(--cl-main);
+  padding: 2rem;
+
+  &__switch {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-column-gap: 2rem;
+    justify-content: center;
+
+    &--text {
+      cursor: pointer;
+      color: var(--cl-white);
+      transition: color 0.3s;
+      &:hover {
+        color: var(--cl-main);
+      }
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    &--text:hover + div svg {
+      fill: var(--cl-main);
+    }
+
+    &--svgwrap {
+    }
+
+    &--svg {
+      width: 2rem;
+      height: 2rem;
+      fill: var(--cl-white);
+      transition: fill 0.3s;
+    }
+  }
+
+  &__form {
+    align-self: center;
+  }
+}

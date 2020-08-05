@@ -28,7 +28,8 @@
 
   &__formholder {
     display: grid;
-    // align-items: center;
+    align-self: center;
+    min-height: 434px;
     // justify-content: center;
   }
 }

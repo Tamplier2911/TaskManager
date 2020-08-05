@@ -9,6 +9,19 @@
     justify-items: center;
 
     max-width: 117rem;
+    margin: 0 auto;
     padding: 0 2rem;
+
+    &--logout {
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--cl-main);
+      }
+    }
+
+    &--text {
+    }
   }
 }

@@ -1,0 +1,29 @@
+.button {
+  justify-self: center;
+
+  &__element {
+    cursor: pointer;
+    padding: 0.8rem 4rem;
+    outline: none;
+    border: none;
+    background-color: var(--cl-main);
+    color: var(--cl-white);
+    font-family: var(--font-text);
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0.2rem 0.2rem 0.2rem var(--cl-shadow);
+
+    &:hover {
+      background-color: var(--cl-white);
+      color: var(--cl-main);
+    }
+  }
+
+  &__disabled {
+    background-color: var(--cl-grey);
+
+    &:hover {
+      background-color: var(--cl-grey);
+      color: var(--cl-white);
+    }
+  }
+}
