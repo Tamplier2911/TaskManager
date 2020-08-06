@@ -5,6 +5,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 // components
+import TasksHolder from "../../components/TasksHolder/TasksHolder.jsx";
 import FormHolder from "../../components/FormHolder/FormHolder.jsx";
 
 const HomePage = () => {
@@ -15,7 +16,9 @@ const HomePage = () => {
       <h1 className="homepage__header">Tasks Manager</h1>
 
       {userObject ? (
-        <div className="homepage__tasksholder">Tasks</div>
+        <div className="homepage__tasksholder">
+          <TasksHolder />
+        </div>
       ) : (
         <div className="homepage__formholder">
           <FormHolder />

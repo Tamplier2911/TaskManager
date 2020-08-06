@@ -1,0 +1,12 @@
+.tasksholder {
+  color: var(--cl-white);
+
+  &__tasks {
+    display: grid;
+    grid-row-gap: 1rem;
+  }
+
+  &__empty {
+    text-align: center;
+  }
+}

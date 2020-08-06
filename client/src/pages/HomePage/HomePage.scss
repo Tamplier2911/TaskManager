@@ -26,6 +26,11 @@
     text-align: center;
   }
 
+  &__tasksholder {
+    display: grid;
+    align-self: center;
+  }
+
   &__formholder {
     display: grid;
     align-self: center;
