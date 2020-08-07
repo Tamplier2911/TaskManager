@@ -14,7 +14,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import Spinner from "./components/Spinner/Spinner.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 
-// test
+// temporary bg
 import bg from "./assets/jpg/paint-bg.jpg";
 
 const App = () => {
@@ -33,12 +33,6 @@ const App = () => {
     <div className="container" style={temporaryBgStyle}>
       <Header />
       <main className="main">
-        <div style={{ width: "300px", height: "300px" }}>
-          <img
-            src={bg}
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-          />
-        </div>
         <Switch>
           <Route exact path="/" component={isLoading ? Spinner : HomePage} />
         </Switch>
