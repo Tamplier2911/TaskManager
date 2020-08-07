@@ -134,8 +134,6 @@ export const logUserOutAndCleanState = () => async (dispatch) => {
     dispatch(cleanTasksFromState());
   } catch (err) {
     // catch error
-    console.log(err);
-    console.log(err.message);
     dispatch(logUserOutFailure());
   }
 };
