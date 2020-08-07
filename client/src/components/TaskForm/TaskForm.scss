@@ -1,0 +1,12 @@
+.taskform {
+  display: grid;
+  background-color: var(--cl-formbg);
+
+  border-radius: 30px;
+  padding: 2rem;
+
+  &__element {
+    display: grid;
+    grid-row-gap: 2rem;
+  }
+}

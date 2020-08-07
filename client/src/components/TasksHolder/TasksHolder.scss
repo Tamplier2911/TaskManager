@@ -1,5 +1,10 @@
 .tasksholder {
+  display: grid;
+  grid-row-gap: 4rem;
   color: var(--cl-white);
+
+  &__create {
+  }
 
   &__tasks {
     display: grid;

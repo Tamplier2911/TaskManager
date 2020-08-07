@@ -7,7 +7,8 @@
 const sanitizeFields = (body, fields) => {
   const sanitized = {};
   for (let field of fields) {
-    if (body[field]) sanitized[field] = body[field];
+    if (body[field] || body[field] === false || body[field] === 0)
+      sanitized[field] = body[field];
   }
   return sanitized;
 };

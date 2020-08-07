@@ -1,4 +1,5 @@
 import axios from "axios";
+import { cleanTasksFromState } from "../tasks/tasks.actions";
 import authTypes from "./auth.types";
 
 const {
@@ -128,6 +129,9 @@ export const logUserOutAndCleanState = () => async (dispatch) => {
 
     // clean up state
     dispatch(logUserOutSuccess(null));
+
+    // clean up tasks state
+    dispatch(cleanTasksFromState());
   } catch (err) {
     // catch error
     dispatch(logUserOutFailure());

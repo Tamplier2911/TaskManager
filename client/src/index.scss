@@ -5,6 +5,7 @@
   --cl-shadow: rgba(0, 0, 0, 0.295);
   --cl-white: #fff;
   --cl-blue: skyblue;
+  --cl-orangade: rgb(247, 104, 47);
   --font-text: "Shojumaru";
   --cl-grad1: rgba(83, 53, 255, 0.377);
   --cl-grad2: rgba(11, 6, 44, 0.377);
@@ -38,6 +39,26 @@ body {
   font-weight: 400;
   line-height: 1.2;
   color: var(--cl-font);
+
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: var(--cl-white);
+    // border-radius: 5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(
+      to bottom,
+      var(--cl-main),
+      var(--cl-orangade)
+    );
+    border-radius: 5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px var(--cl-shadow);
+    box-shadow: inset 0 0 6px var(--cl-shadow);
+  }
 }
 
 select,
@@ -57,4 +78,10 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   font-size: 16px !important;
+}
+
+::selection {
+  // background-color: var(--cl-primary);
+  background-color: var(--cl-main);
+  color: var(--cl-white);
 }

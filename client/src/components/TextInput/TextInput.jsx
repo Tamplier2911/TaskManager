@@ -9,7 +9,7 @@ const TextInput = ({ Logo, label, ...otherProps }) => {
       {label ? (
         <label className="textInput__label">
           <div className="textInput__label--svgwrap">
-            <Logo className="textInput__label--svg" />
+            {Logo ? <Logo className="textInput__label--svg" /> : null}
           </div>
           <div className="textInput__label--text">{label}</div>
         </label>

@@ -1,0 +1,33 @@
+.spinner {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  &__element {
+    display: grid;
+    width: 10rem;
+    height: 10rem;
+    align-items: center;
+    justify-items: center;
+
+    &--svg {
+      width: 8rem;
+      height: 8rem;
+      fill: var(--cl-white);
+
+      //   transform: rotate(-20deg);
+      animation: 1.5s spin infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  0%,
+  10% {
+    transform: rotate(0deg);
+  }
+  90%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
