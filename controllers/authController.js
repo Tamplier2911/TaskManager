@@ -89,7 +89,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, req, res);
 });
 
-exports.logOut = catchAsync(async (req, res, next) => {
+exports.logOut = (req, res, next) => {
   res.cookie("jwt", "", {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
@@ -102,7 +102,7 @@ exports.logOut = catchAsync(async (req, res, next) => {
     status: "success",
     msg: "You have logged out securely.",
   });
-});
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   // check if token exists in authorization header or in cookies

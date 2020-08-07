@@ -30,22 +30,22 @@ const {
 const router = Router();
 
 // signup
-router.route("/signup").post(signUp);
+router.post("/signup", signUp);
 
 // login
-router.route("/login").post(logIn);
+router.post("/login", logIn);
 
 // logout
-router.route("/logout").get(logOut);
+router.get("/logout", logOut);
 
 // forgot password
-router.route("/forgotPassword").post(forgotPassword);
+router.post("/forgotPassword", forgotPassword);
 
 // reset password
-router.route("/resetPassword/:token").patch(resetPassword);
+router.patch("/resetPassword/:token", resetPassword);
 
 // get user object
-router.route("/getMe").get(isLoggedIn, getUserObject);
+router.get("/getMe", isLoggedIn, getUserObject);
 
 // PROTECTED
 router.use(protect);
