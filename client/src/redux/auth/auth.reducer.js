@@ -30,9 +30,10 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return { ...state, isLoading: true };
     case SIGN_USER_UP_SUCCESS:
     case LOG_USER_IN_SUCCESS:
-    case LOG_USER_OUT_SUCCESS:
     case FETCH_AUTH_OBJECT_SUCCESS:
       return { ...state, isLoading: false, userObject: action.payload };
+    case LOG_USER_OUT_SUCCESS:
+      return { ...state, isLoading: false, userObject: null };
     case SIGN_USER_UP_FAILURE:
     case LOG_USER_IN_FAILURE:
     case LOG_USER_OUT_FAILURE:
