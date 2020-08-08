@@ -58,6 +58,7 @@ const SignupForm = () => {
           label="Name"
           type="text"
           Logo={UserSVG}
+          id={"name-signupform"}
           required
         />
         <TextInput
@@ -67,6 +68,7 @@ const SignupForm = () => {
           label="Email"
           type="email"
           Logo={EmailSVG}
+          id={"email-signupform"}
           required
         />
         <TextInput
@@ -76,6 +78,7 @@ const SignupForm = () => {
           label="Password"
           type="password"
           Logo={PasswordSVG}
+          id={"password-signupform"}
           required
         />
         <TextInput
@@ -85,6 +88,7 @@ const SignupForm = () => {
           label="Confirm Password"
           type="password"
           Logo={PasswordSVG}
+          id={"passwordconfirm-signupform"}
           required
         />
         <Button

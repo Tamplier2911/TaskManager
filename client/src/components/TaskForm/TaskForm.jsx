@@ -49,6 +49,8 @@ const TaskForm = () => {
           value={title}
           label="Title"
           type="text"
+          id={"title-taskform"}
+          required
         />
         <TextInput
           onChange={onInputChange}
@@ -56,6 +58,8 @@ const TaskForm = () => {
           value={description}
           label="Description"
           type="text"
+          id={"description-taskform"}
+          required
         />
         <Button title="Create Task" active={isLoading ? 0 : 1} type="submit" />
       </form>

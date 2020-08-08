@@ -68,6 +68,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// robots.txt
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./static/meta/robots.txt"));
+});
+
 // server static assets
 app.use("/static", express.static(path.join(__dirname, "static")));
 

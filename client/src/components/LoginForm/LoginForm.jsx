@@ -52,6 +52,7 @@ const LoginForm = () => {
           label="Email"
           type="email"
           Logo={EmailSVG}
+          id={"email-loginform"}
           required
         />
         <TextInput
@@ -61,6 +62,7 @@ const LoginForm = () => {
           label="Password"
           type="password"
           Logo={PasswordSVG}
+          id={"password-loginform"}
           required
         />
         <Button
